@@ -33,6 +33,28 @@ $config->setCacheFile($cacheDir . '/.php_cs.cache');
 return $config;
 ```
 
+## Composer
+
+Add the following to your compose.json:
+
+```json
+	"scripts": {
+		"cs": "php-cs-fixer fix -v --diff --dry-run",
+		"cs-fix": "php-cs-fixer fix -v --diff"
+	}
+```
+
+Now you can check your code style by running:
+
+```
+composer cs
+```
+and you can fix it by:
+
+```
+composer cs-fix
+```
+
 ### Git
 
 We suggest to add `.php_cs.cache` (this is the cache file created by `php-cs-fixer`) to `.gitignore`:

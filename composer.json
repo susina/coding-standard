@@ -19,9 +19,5 @@
 	"require" : {
 		"php" : ">=7.2",
 		"friendsofphp/php-cs-fixer": "^2.16"
-	},
-	"scripts": {
-		"cs": "php-cs-fixer fix -v --diff --dry-run",
-		"cs-fix": "php-cs-fixer fix -v --diff"
 	}
 }
