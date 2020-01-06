@@ -34,7 +34,10 @@ class Config extends BaseConfig {
                 'syntax' => 'short'
             ],
             'blank_line_after_opening_tag' => false,
-            'declare_strict_types' => true
+            'declare_strict_types' => true,
+            'php_unit_internal_class' => false,
+            'php_unit_test_class_requires_covers' => false,
+            'php_unit_size_class' => false
         ];
     }
 }
