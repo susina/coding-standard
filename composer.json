@@ -1,5 +1,5 @@
 {
-	"name" : "cristianoc72/coding-standard",
+	"name" : "susina/coding-standard",
 	"type" : "library",
 	"description" : "Shared config for php-cs-fixer, based on PSR1 and PSR2",
 	"license" : "Apache2",

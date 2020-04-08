@@ -1,4 +1,4 @@
-# Coding Standard
+# Susina Coding Standard
 
 coding-standard library is a set of [php-cs-fixer](https://cs.sensiolabs.com) rules, based on PSR1 and PSR2, and inspired
 on [phootwork/php-cs-fixer-config](https://github.com/phootwork/php-cs-fixer-config).
@@ -8,7 +8,7 @@ on [phootwork/php-cs-fixer-config](https://github.com/phootwork/php-cs-fixer-con
 Run
 
 ```
-$ composer require --dev cristianoc72/coding-standard
+$ composer require --dev susina/coding-standard
 ```
 
 ## Configuration
