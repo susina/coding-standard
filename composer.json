@@ -2,7 +2,7 @@
 	"name" : "susina/coding-standard",
 	"type" : "library",
 	"description" : "Shared config for php-cs-fixer, based on PSR1 and PSR2",
-	"license" : "Apache2",
+	"license" : "Apache-2.0",
 	"authors" : [{
 			"name" : "Cristiano Cinotti",
 			"email" : "cristianocinotti@gmail.com"
