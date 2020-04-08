@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-namespace CodingStandard;
+namespace Susina\CodingStandard;
 
 use PhpCsFixer\Config as BaseConfig;
 

@@ -13,7 +13,7 @@
 	],
 	"autoload" : {
 		"psr-4" : {
-			"CodingStandard\\" : "src/"
+			"Susina\\CodingStandard\\" : "src/"
 		}
 	},
 	"require" : {

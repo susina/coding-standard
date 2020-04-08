@@ -18,7 +18,7 @@ Create a configuration file `.php_cs.dist` in the root of your project:
 ```php
 <?php declare(strict_types=1);
 
-$config = new CodingStandard\Config();
+$config = new Susina\CodingStandard\Config();
 $config->getFinder()
     ->exclude(['fixture'])
     ->in(__DIR__ . '/src')
