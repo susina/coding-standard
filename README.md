@@ -1,6 +1,8 @@
 # Susina Coding Standard
 
-coding-standard library is a set of [php-cs-fixer](https://cs.sensiolabs.com) rules, based on PSR1 and PSR2, and inspired
+![](https://github.com/susina/coding-standard/workflows/Installation/badge.svg)
+
+`susina/coding-standard` library is a set of [php-cs-fixer](https://cs.sensiolabs.com) rules, based on PSR1 and PSR2, and inspired
 on [phootwork/php-cs-fixer-config](https://github.com/phootwork/php-cs-fixer-config).
 
 ## Installation
