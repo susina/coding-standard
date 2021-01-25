@@ -15,22 +15,15 @@
  * limitations under the License.
  */
 
-namespace Susina\CodingStandard;
+namespace Susina\CodingStandard\Tests;
 
-use PhpCsFixer\Config as BaseConfig;
+use Susina\CodingStandard\Config;
 
-class Config extends BaseConfig
+class ConfigTest extends TestCase
 {
-    public function __construct()
+    public function testConfig(): void
     {
-        parent::__construct('coding-standard');
-        $this->setRiskyAllowed(true);
-        $this->setLineEnding("\n");
-    }
-
-    public function getRules(): array
-    {
-        return [
+        $expected = [
             '@PSR12' => true,
             'declare_strict_types' => true,
             'linebreak_after_opening_tag' => false,
@@ -45,5 +38,9 @@ class Config extends BaseConfig
                 'syntax' => 'short',
             ]
         ];
+
+        $config = new Config();
+
+        $this->assertEquals($expected, $config->getRules());
     }
 }
