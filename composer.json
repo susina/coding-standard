@@ -1,23 +1,50 @@
 {
-	"name" : "susina/coding-standard",
-	"type" : "library",
-	"description" : "Shared config for php-cs-fixer, based on PSR1 and PSR2",
-	"license" : "Apache-2.0",
-	"authors" : [{
-			"name" : "Cristiano Cinotti",
-			"email" : "cristianocinotti@gmail.com"
-		}
-	],
-	"keywords" : [
-		"code style", "coding standard", "php-cs-fixer"
-	],
-	"autoload" : {
-		"psr-4" : {
-			"Susina\\CodingStandard\\" : "src/"
-		}
-	},
-	"require" : {
-		"php" : ">=7.2",
-		"friendsofphp/php-cs-fixer": "^2"
-	}
+    "name": "susina/coding-standard",
+    "type": "library",
+    "description": "Shared config for php-cs-fixer, based on PSR1 and PSR2",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Cristiano Cinotti",
+            "email": "cristianocinotti@gmail.com"
+        }
+    ],
+    "keywords": [
+        "code style",
+        "coding standard",
+        "php-cs-fixer",
+        "PSR-1",
+        "PSR-2"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Susina\\CodingStandard\\": "src/",
+            "Susina\\CodingStandard\\Script\\": "script/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Susina\\CodingStandard\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*",
+        "friendsofphp/php-cs-fixer": "^2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "mikey179/vfsstream": "^1.6",
+        "composer/composer": "^2.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Susina\\CodingStandard\\Script\\ComposerScripts::postInstall"
+        ],
+        "post-update-cmd": [
+            "Susina\\CodingStandard\\Script\\ComposerScripts::postInstall"
+        ],
+        "cs": "php-cs-fixer fix -v --diff --dry-run",
+        "cs-fix": "php-cs-fixer fix -v --diff"
+    }
 }

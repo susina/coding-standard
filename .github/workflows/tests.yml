@@ -1,5 +1,5 @@
 # Run test suite
-name: Installation
+name: Test suite
 on: [push, pull_request]
 jobs:
   test:
@@ -11,6 +11,9 @@ jobs:
         php-versions: ['7.2', '7.3', '7.4', '8.0']
     runs-on: ${{ matrix.operating-system }}
     steps:
+      - name: Fix autocrlf on Windows
+        if: matrix.operating-system == 'windows-latest'
+        run: git config --global core.autocrlf false
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup PHP, with composer and extensions
@@ -29,3 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install dependencies
         run: composer install --no-progress --no-suggest --prefer-dist
+      - name: Coding standard
+        run: composer cs
+      - name: Run tests
+        run: vendor/bin/phpunit
