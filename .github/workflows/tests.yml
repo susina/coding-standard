@@ -1,5 +1,4 @@
-# Run test suite
-name: Test suite
+name: Test Suite
 on: [push, pull_request]
 jobs:
   test:

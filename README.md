@@ -1,10 +1,10 @@
 # Susina Coding Standard
 
-![](https://github.com/susina/coding-standard/workflows/Test%20Suite/badge.svg)
+![Test Suite](https://github.com/susina/coding-standard/workflows/Test%20Suite/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/29c2b80e4866df517da3/maintainability)](https://codeclimate.com/github/susina/coding-standard/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/29c2b80e4866df517da3/test_coverage)](https://codeclimate.com/github/susina/coding-standard/test_coverage)
 
-`susina/coding-standard` library is a set of [php-cs-fixer](https://cs.sensiolabs.com) rules for Susina project repository.
+Susina Coding Standard library is a set of [php-cs-fixer](https://cs.sensiolabs.com) rules for Susina project repository.
 It's based on [PSR1](https://www.php-fig.org/psr/psr-1/) and [PSR12](https://www.php-fig.org/psr/psr-12/),
 with the following differences:
 
