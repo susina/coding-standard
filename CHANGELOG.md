@@ -4,12 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 2021-02-19
-### Fixed
-Fix spaces around `|` operator.
-See https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5495
-
-## [2.0.0] - 2021-01-26
+## [2.0.0] - 2021-02-19
 ### Addded
 -  Add post installation Composer script to automatically:
     -  create a basic configuration file
@@ -24,6 +19,10 @@ See https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5495
 
 ### Changed
 -  Change rules to adhere to PSR-12
+
+### Fixed
+Fix spaces around `|` operator.
+See https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/5495
 
 ## [1.3.1] - 2020-12-22
 ### Changed
