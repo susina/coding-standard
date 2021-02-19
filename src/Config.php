@@ -43,6 +43,9 @@ class Config extends BaseConfig
             ],
             'array_syntax' => [
                 'syntax' => 'short',
+            ],
+            'binary_operator_spaces' => [
+                'operators' => ['|' => null]
             ]
         ];
     }
