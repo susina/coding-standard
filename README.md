@@ -21,12 +21,12 @@ Run
 $ composer require --dev susina/coding-standard
 ```
 
-The installation script generates a stub configuration file `.php_cs.dist` in the root of your project, then it adds
+The installation script generates a stub configuration file `.php-cs-fixer.php` in the root of your project, then it adds
 [two scripts](#composer) into your `composer.json` and it adds the php-cs-fixer cache file to your `.gitignore`. 
 
 ## Configuration
 
-After installation, you can find a `.php_cs.dist` file in the root of your project, containing a basic configuration:
+After installation, you can find a `.php-cs-fixer.php` file in the root of your project, containing a basic configuration:
 
 ```php
 <?php declare(strict_types=1);
@@ -68,7 +68,7 @@ composer cs-fix
 
 ### Travis
 
-You can configure Travis to cache the `.php_cs.cache` file. Update your `.travis.yml`:
+You can configure Travis to cache the `.php-cs-fixer.cache` file. Update your `.travis.yml`:
 
 ```yml
 cache:

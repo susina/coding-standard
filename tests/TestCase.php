@@ -26,7 +26,7 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 class TestCase extends BaseTestCase
 {
     /** @var vfsStreamDirectory */
-    private $root;
+    private $root = null;
 
     public function getRoot(): vfsStreamDirectory
     {
