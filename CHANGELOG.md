@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.2.0] - 2021-07-26
 ### Changed
 -  Remove unsupported PHP 7.2 version
--  Add PHP 8.1 to ci
 -  Move `script` directory under `src`
 -  Adjust `postInstall` Compose script to:
     -  update the configuration file, if it finds a deprecated `php_cs.dist`
