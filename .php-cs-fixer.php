@@ -19,7 +19,6 @@ $config = new Susina\CodingStandard\Config();
 $config->getFinder()
     ->in(__DIR__ . "/src")
     ->in(__DIR__ . "/tests")
-    ->in(__DIR__ . "/script")
 ;
 
 return $config;

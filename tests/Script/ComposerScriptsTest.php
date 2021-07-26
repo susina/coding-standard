@@ -15,10 +15,11 @@
  * limitations under the License.
  */
 
-namespace Susina\CodingStandard\Tests;
+namespace Susina\CodingStandard\Tests\Script;
 
 use org\bovigo\vfs\vfsStream;
 use Susina\CodingStandard\Script\ComposerScripts;
+use Susina\CodingStandard\Tests\TestCase;
 
 class ComposerScriptsTest extends TestCase
 {
@@ -154,5 +155,44 @@ composer.phar
         ComposerScripts::postInstall($this->getEvent());
 
         $this->assertEquals($expected, file_get_contents($file->url()));
+    }
+
+    public function testMigrateConfigFile(): void
+    {
+        $content = '
+$config = new Susina\CodingStandard\Config();
+$config->getFinder()
+    ->in(__DIR__ . "/src")
+    ->in(__DIR__ . "/tests")
+    ->in(__DIR__ . "/stubs")
+    ->exclude(__DIR__ . "/tests/fixtures")
+;
+
+return $config;
+';
+        $file = vfsStream::newFile('.php_cs.dist')
+            ->at($this->getRoot())
+            ->setContent($content)
+        ;
+
+        //This instruction creates a composer.json file into the virtual filesystem
+        $composer = $this->getComposer();
+        ComposerScripts::postInstall($this->getEvent());
+
+        $this->assertEquals($content, file_get_contents($this->getRoot()->url() . "/.php-cs-fixer.php"));
+        $this->assertFileDoesNotExist($this->getRoot()->url() . "/.php_cs.dist");
+    }
+
+    public function testDeleteDeprecatedCacheFile(): void
+    {
+        $file = vfsStream::newFile('.php_cs.cache')
+            ->at($this->getRoot())
+            ->setContent('Obsolete cache content')
+        ;
+
+        $composer = $this->getComposer();
+        ComposerScripts::postInstall($this->getEvent());
+
+        $this->assertFileDoesNotExist('.php_cs.cache');
     }
 }

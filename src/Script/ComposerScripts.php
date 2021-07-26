@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 /*
- * Copyright 2020 Cristiano Cinotti
+ * Copyright 2020-2021 Cristiano Cinotti
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,16 +23,22 @@ class ComposerScripts
 {
     public static function postInstall(Event $event)
     {
-        $basePath = $event->getArguments()['basePath'] ?? __DIR__ . '/..';
+        $basePath = $event->getArguments()['basePath'] ?? __DIR__ . '/../..';
 
         static::createStub($basePath);
         static::addScripts($basePath);
         static::updateGitignore($basePath);
+        static::removeDeprecatedCache($basePath);
     }
 
     private static function createStub(string $basePath): void
     {
         $stubFile = "$basePath/.php-cs-fixer.php";
+        $deprecated = "$basePath/.php_cs.dist";
+
+        if (file_exists($deprecated)) {
+            rename($deprecated, $stubFile);
+        }
 
         if (!file_exists($stubFile)) {
             $content = '<?php declare(strict_types=1);
@@ -75,6 +81,13 @@ return $config;
             if (false === strpos($content, '.php-cs-fixer.cache') && false === strpos($content, '*.cache')) {
                 file_put_contents($gitignoreFile, "$content\n.php-cs-fixer.cache\n");
             }
+        }
+    }
+
+    private static function removeDeprecatedCache(string $basePath): void
+    {
+        if (file_exists("$basePath/.php_cs.cache")) {
+            unlink("$basePath/.php_cs.cache");
         }
     }
 }
