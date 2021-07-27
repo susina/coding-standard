@@ -1,4 +1,4 @@
-name: Test Suite
+name: Test Installation
 on: [push, pull_request]
 jobs:
   test:
@@ -7,7 +7,7 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-        php-versions: ['7.3', '7.4', '8.0']
+        php-versions: ['7.2', '7.3', '7.4', '8.0', '8.1']
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Fix autocrlf on Windows
@@ -31,7 +31,3 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install dependencies
         run: composer install --no-progress --no-suggest --prefer-dist
-      - name: Coding standard
-        run: composer cs
-      - name: Run tests
-        run: vendor/bin/phpunit

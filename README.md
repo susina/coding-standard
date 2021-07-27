@@ -1,8 +1,6 @@
 # Susina Coding Standard
 
-![Test Suite](https://github.com/susina/coding-standard/workflows/Test%20Suite/badge.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/29c2b80e4866df517da3/maintainability)](https://codeclimate.com/github/susina/coding-standard/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/29c2b80e4866df517da3/test_coverage)](https://codeclimate.com/github/susina/coding-standard/test_coverage)
+![Test Installation](https://github.com/susina/coding-standard/workflows/Test%20Suite/badge.svg)
 
 Susina Coding Standard library is a set of [php-cs-fixer](https://cs.sensiolabs.com) rules for Susina project repository.
 It's based on [PSR1](https://www.php-fig.org/psr/psr-1/) and [PSR12](https://www.php-fig.org/psr/psr-12/),
@@ -21,12 +19,9 @@ Run
 $ composer require --dev susina/coding-standard
 ```
 
-The installation script generates a stub configuration file `.php-cs-fixer.php` in the root of your project, then it adds
-[two scripts](#composer) into your `composer.json` and it adds the php-cs-fixer cache file to your `.gitignore`. 
-
 ## Configuration
 
-After installation, you can find a `.php-cs-fixer.php` file in the root of your project, containing a basic configuration:
+Create a `.php-cs-fixer.php` file in the root of your project:
 
 ```php
 <?php declare(strict_types=1);
@@ -35,18 +30,17 @@ $config = new Susina\CodingStandard\Config();
 $config->getFinder()
     ->in(__DIR__ . '/src')
     ->in(__DIR__ . '/tests')
+    ->excludes(['fixtures'])
 ;
 
 return $config;
 ```
-If your project follows the usual convention to put the code in `src` and tests in `tests` directories, there's nothing
-else to do. Otherwise, you can modify your own configuration at your choice, as explained in
-[php-cs-fixer documentation](https://cs.symfony.com/doc/config.html). The installation/update script is smart enough to
-not overwrite your configuration file, if it's present.
+
+See [php-cs-fixer documentation](https://cs.symfony.com/doc/config.html) for further information.
 
 ## Composer
 
-After the installation, your `composer.json` file contains the following lines:
+Add to your `composer.json` file the following lines:
 
 ```json
 	"scripts" : {
@@ -66,6 +60,13 @@ and you can fix it by:
 composer cs-fix
 ```
 
+### Git
+
+We suggest adding `.php-cs-fixer.cache` to .gitignore:
+
+vendor/
+.php-cs-fixer.cache
+
 ### Travis
 
 You can configure Travis to cache the `.php-cs-fixer.cache` file. Update your `.travis.yml`:
@@ -81,6 +82,20 @@ Then run `php-cs-fixer` in the `script` section:
 ```yml
 script:
   - composer cs
+```
+
+### Github Actions
+
+You can configure Github actions to cache `.php-cs-fixer.cache` file. In your workflow file,
+into the Cache configuration step, simply add `~/.php-cs-fixer.cache` under the `path` key:
+
+```yml
+- name: Cache multiple paths
+  uses: actions/cache@v2
+  with:
+     path: |
+        ~/.php-cs-fixer.cache
+     key: your-awesome-cache-key
 ```
 
 ## Fixing issues
