@@ -38,15 +38,15 @@ return $config;
 
 See [php-cs-fixer documentation](https://cs.symfony.com/doc/config.html) for further information.
 
-## Composer
+## Composer Scripts
 
 Add to your `composer.json` file the following lines:
 
 ```json
-	"scripts" : {
-		"cs" : "php-cs-fixer fix -v --diff --dry-run",
-		"cs-fix" : "php-cs-fixer fix -v --diff"
-	}
+ "scripts" : {
+     "cs" : "php-cs-fixer fix -v --diff --dry-run",
+     "cs-fix" : "php-cs-fixer fix -v --diff"
+ }
 ```
 
 Now you can check your code style by running:
@@ -54,6 +54,7 @@ Now you can check your code style by running:
 ```
 composer cs
 ```
+
 and you can fix it by:
 
 ```
@@ -64,8 +65,10 @@ composer cs-fix
 
 We suggest adding `.php-cs-fixer.cache` to .gitignore:
 
+```
 vendor/
 .php-cs-fixer.cache
+```
 
 ### Travis
 
@@ -86,7 +89,7 @@ script:
 
 ### Github Actions
 
-You can configure Github actions to cache `.php-cs-fixer.cache` file. In your workflow file,
+You can configure Github actions to cache `.php-cs-fixer.cache` file. In your workflow,
 into the Cache configuration step, simply add `~/.php-cs-fixer.cache` under the `path` key:
 
 ```yml
@@ -96,14 +99,6 @@ into the Cache configuration step, simply add `~/.php-cs-fixer.cache` under the 
      path: |
         ~/.php-cs-fixer.cache
      key: your-awesome-cache-key
-```
-
-## Fixing issues
-
-If you need to fix issues locally, just run
-
-```
-$ composer cs-fix
 ```
  
 ## License
